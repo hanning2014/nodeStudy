@@ -1,5 +1,9 @@
 {
     "devDependencies": {
         "jasmine-node": ""
+    },
+    "dependencies": {
+	"mysql": "~2.0.0"
     }
 }
+
