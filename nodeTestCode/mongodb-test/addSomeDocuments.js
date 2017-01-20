@@ -5,7 +5,7 @@ MongoClient.connect(
     function(err, connection) {
         var collection = connection.collection("customers");
         var doFind = function (callback) {
-            collection.find().toArray(function (err, document) {
+            collection.find({"v": 5}).toArray(function (err, document) {
                 console.dir(document);
                 callback();
             });
@@ -18,12 +18,12 @@ MongoClient.connect(
                     function (err, count) {
                         doInsert(i + 1);
                     }
-                )
+                );
             } else {
                 console.log("inserted", i, "documents");
                 doFind(function () {
                     doUpdate();
-                })
+                });
             }
         };
         var doUpdate = function () {
@@ -46,4 +46,4 @@ MongoClient.connect(
         };
         doInsert(0);
     }
-    );
+);
